@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Start Project WBS -->
+        <record id="project_task_inherited_form_wbs1_custom" model="ir.ui.view">
+            <field name="name">project.wbs</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="pragtech_ppc.project_task_inherited_form_wbs1"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='sub_project']" position="after">
+                    <field name="material_percentage_wbs"/>
+                    <field name="duration"  attrs="{'required': [('related_details', '!=', False)]}"/>
+                    <field name="type_of_related" attrs="{'required': [('related_details', '!=', False)]}"/>
+                    <field name="related_details"
+                           options="{'no_create': True,
+                            'no_quick_create': True, 'no_create_edit':True,
+                            'no_open': True,'create': False, 'create_edit': False}"
+                    />
+                </xpath>
+
+                <xpath expr="//field[@name='planned_finish_date']" position="after">
+                    <field name="planned_cost"/>
+                    <field name="profit_value"/>
+                    <field name="total_wbs_value"/>
+                     <field name="custom_actual_cost"/>
+                    <field name="lags"/>
+                    <field name="quantity"/>
+                    <field name="uom_id"/>
+                    <field name="unit_price"/>
+                    <field name="unit_price_2" invisible="1"/>
+                    <field name="quantity_2" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//notebook/page[@name='estimated_material']" position="after">
+                    <page name="project_cos_wbs" string="Project Cos" invisible="1">
+                        <field name="material_percentage_wbs_line">
+                            <tree editable="bottom">
+                                <field name="item_number"/>
+                                <field name="name"/>
+                                <field name="material_product_id"/>
+                                <field name="material_unit_id"/>
+                                <field name="quantity"/>
+                                <field name="waste"/>
+                                <field name="transfer"/>
+                                <field name="loading"/>
+                                <field name="overhead"/>
+                                <field name="subtotal" sum="Total"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+         <record id="view_task_new_form_inherited_line" model="ir.ui.view">
+            <field name="name">view.project.task.inherited</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="pragtech_ppc.project_task_inherited_form_wbs1" />
+        <field name="groups_id" eval="[(6, 0, [ref('pragtech_project_customization.group_sale_person_project') ])]" />                
+            <field name="arch" type="xml"> 
+                                              
+                <field name="labour_profit_id" position="attributes">
+                   <attribute name="readonly">1</attribute>                   
+                </field>  
+                <field name="labour_overhead" position="attributes">
+                   <attribute name="readonly">1</attribute>                   
+                </field> 
+                <field name="profit_id" position="attributes">
+                   <attribute name="readonly">1</attribute>                   
+                </field>                             
+            </field>
+        </record>
+        
+        <record id="view_sale_orders_form_inherited_line_new" model="ir.ui.view">
+            <field name="name">view.sale.form.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">                                   
+              <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                  <field name="qty_wbs" invisible="1"/>
+              </xpath>                           
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sub_project_form_view_custom" model="ir.ui.view">
+            <field name="name">sub.project.form.inherited</field>
+            <field name="model">sub.project</field>
+            <field name="inherit_id" ref="pragtech_ppc.sub_project_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='end_date']" position="after">
+                    <field name="end_date"/>
+
+                    <field name="duration_subproject"
+                           attrs="{'required': [('related_details_subproject', '!=', False)]}"/>
+                    <field name="type_of_related_subproject"
+                           attrs="{'required': [('related_details_subproject', '!=', False)]}"/>
+                    <field name="related_details_subproject"
+                           options="{'no_create': True,
+                            'no_quick_create': True, 'no_create_edit':True,
+                            'no_open': True,'create': False, 'create_edit': False}"
+                    />
+
+                    <field name="lags_subproject"/>
+                    <field name="subproject_amount"/>
+                    <field name="quantity" invisible="1"/>
+                    <field name="unit_price" invisible="1"/>
+                    <field name="uom_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

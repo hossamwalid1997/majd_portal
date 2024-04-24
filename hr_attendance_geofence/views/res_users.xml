@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_simple_attendance_geolocation" model="ir.ui.view">
+        <field name="name">Attendance Geolocation</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="Users">
+                <field name="image_1920" readonly="0" widget="image" class="oe_avatar" 
+                    options="{'zoom': true, 'preview_image': 'image_128'}"/>
+                <h1>
+                    <field name="name" readonly="1" class="oe_inline"/>
+                </h1>
+            
+                <group name="attendance_geolocation">
+                    <field name="attendance_geolocation" readonly="0"/>
+                </group>
+                
+                <footer>
+                    <button name="attendance_geolocation_reload" type="object" string="Save" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_simple_attendance_geolocation" model="ir.actions.act_window">
+        <field name="name">Attendance Geolocation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.users</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="action_simple_attendance_geolocation_view" model="ir.actions.act_window.view">
+        <field eval="10" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_simple_attendance_geolocation"/>
+        <field name="act_window_id" ref="action_simple_attendance_geolocation"/>
+    </record>
+</odoo>

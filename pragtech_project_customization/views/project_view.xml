@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_project_form_inherited2" model="ir.ui.view">
+            <field name="name">view.project.form.inherited</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//header" position="inside">
+                    <button name="action_send_to_manager" string="Send To Manager"
+                            type="object"
+                            class="oe_highlight"
+                            style="margin-left:10px;"
+                            groups="pragtech_project_customization.group_sale_person_project"/>
+                            
+                    <button name="action_approval_to_project" string="Approval Project"
+                            type="object"
+                            class="oe_highlight"
+                            style="margin-left:10px;"
+                            groups="pragtech_project_customization.group_sale_manager"/>
+                            
+                    <button name="create_quotations" string="Create Quotations"
+                            type="object"
+                            class="oe_highlight"
+                            style="margin-left:10px;"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="total_planned_cost"/>
+                    <field name="profit_project_value"/>
+                    <field name="duration_project"  attrs="{'required': [('related_details_project', '!=', False)]}"/>
+                    <field name="type_of_related_project" attrs="{'required': [('related_details_project', '!=', False)]}"/>
+					<field name="analytic_account_id" />
+                </xpath>
+
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="profit_project"/>
+                    <field name="total_project_value"/>
+                    <field name="related_details_project"
+                           options="{'no_create': True,
+                            'no_quick_create': True, 'no_create_edit':True,
+                            'no_open': True,'create': False, 'create_edit': False}"
+                    />
+
+                    <field name="lags_project"/>
+                    <field name="manager_status"/>
+                    <field name="quotation_status"/>
+                    <field name="sale_id"/>
+                </xpath>
+            </field>
+      </record>
+    </data>
+</odoo>
+

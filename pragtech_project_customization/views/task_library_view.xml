@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+
+        <!-- Start Project Task Library -->
+        <record id="project_task_library_form_custom" model="ir.ui.view">
+            <field name="name">project.task.library.form</field>
+            <field name="model">project.task.library</field>
+            <field name="inherit_id" ref="pragtech_ppc.project_task_library_form"/>
+            <field name="arch" type="xml">
+               
+                  <xpath expr="//field[@name='category_id']" position="after">   
+                                <field name="material_percentage"/>
+                  </xpath>
+                  <xpath expr="//notebook/page[@name='labour_groups']" position="after">
+                                <page name="project_cos_new" string="Project Cos" >
+                                   <field name="material_percentage_line" >
+                                        <tree editable="bottom" >
+                                            <field name="item_number" />
+                                            <field name="name" />
+                                            <field name="material_product_id"/>
+                                            <field name="material_unit_id"/>
+                                            <field name="quantity"/>
+                                            <field name="waste"/>
+                                            <field name="transfer"/>
+                                            <field name="loading"/>
+                                            <field name="overhead"/>
+                                             <field name="subtotal" sum="Total"/>
+                                        </tree>
+                                 </field>
+                            </page> 
+                    </xpath>      
+            </field>
+        </record>
+    </data>
+</odoo>

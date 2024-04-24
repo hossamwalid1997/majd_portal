@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>	
+  		<record id="res_config_settings_view_form_hr_attendance" model="ir.ui.view">
+			<field name="name">res.config.settings.view.form.inherit.hr.attendance</field>
+            <field name="model">res.config.settings</field>
+			<field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>			
+			<field name="arch" type="xml">						
+				<xpath expr="//div[@data-key='hr_attendance']" position="inside">
+                    <h2>Check In / Check Out Control</h2>
+                    <div class="row mt16 o_settings_container" name="hr_attendance_controls_gmap">
+                        <div class="col-12 col-lg-6 o_setting_box" title="Geolocation">
+                            <div class="o_setting_left_pane">
+                                <field name="hr_attendance_geolocation"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Geolocation</span>
+                                <div class="text-muted">
+                                    Enable to Capture the Geolocation while using the attendance
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="Geofence">
+                            <div class="o_setting_left_pane">
+                                <field name="hr_attendance_geofence"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Geofence</span>
+                                <div class="text-muted">
+                                    Enable to Capture the Geofence while using the attendance
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="Photo">
+                            <div class="o_setting_left_pane">
+                                <field name="hr_attendance_photo"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Photo</span>
+                                <div class="text-muted">
+                                    Enable to Capture the Photo while using the attendance
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="IP Address">
+                            <div class="o_setting_left_pane">
+                                <field name="hr_attendance_ip"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">IP Address</span>
+                                <div class="text-muted">
+                                    Enable to Capture the IP Address while using the attendance
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box" title="Reason">
+                            <div class="o_setting_left_pane">
+                                <field name="hr_attendance_reason"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Reason</span>
+                                <div class="text-muted">
+                                    Enable to Capture the Reasons while using the attendance
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</xpath>				
+			</field>
+		</record>
+
+        <record id="res_config_settings_view_form_hr_geofence" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.hr.geofence</field>
+            <field name="priority" eval="200"/>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='integration']" position="after">
+                    <div name="web_google_maps_geofence">
+                        <h2>Google Map Geofence</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Set API keys</span>
+                                    <div class="text-muted">                                        
+                                        <span>
+                                            Check the 
+                                            <a href="https://developers.google.com/maps/documentation/embed/get-api-key" target="_blank">page</a> 
+                                            for Create Google Map API keys
+                                        </span>
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <label for="google_map_view_api_key" string="Api key"/>
+                                            <field name="google_map_view_api_key"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem 
+            id="hr_attendance_settings_redefinition_menu"
+            name="Configuration"
+            parent="hr_attendance.menu_hr_attendance_settings"
+            sequence="100"
+            action="hr_attendance.action_hr_attendance_settings"
+            groups="hr_attendance.group_hr_attendance_manager"/>  
+	</data>		
+</odoo>

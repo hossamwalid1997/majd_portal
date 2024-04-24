@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pragtech_project_customization.access_material_percentage_library,access_material_percentage_library,pragtech_project_customization.model_material_percentage_library,base.group_user,1,1,1,1
+pragtech_project_customization.access_material_percentage_wbs,access_material_percentage_wbs,pragtech_project_customization.model_material_percentage_wbs,base.group_user,1,1,1,1
+
+
+

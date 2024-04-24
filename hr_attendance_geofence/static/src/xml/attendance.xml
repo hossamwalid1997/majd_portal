@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-extend="HrAttendanceMyMainMenu">
+        <t t-jquery="div.o_hr_attendance_kiosk_mode" t-operation="append">
+            <t t-if="widget.employee">
+                <div class="gmap_kisok_container" id="gmap_kisok">
+                    <i class="fa fa-2x fa-angle-double-up gmap_kisok_toggle" id="gmap_kisok_toggle"/>
+                    <h3>Google Map Location</h3>
+                    <div class="gmap_kisok_view" style=""></div>
+                </div>
+            </t>
+        </t>
+    </t>
+
+</templates>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- This is for ProjectHolidayConfig Details form view -->
+        <record id="project_holiday_config_form_id" model="ir.ui.view">
+            <field name="name">Project Holiday Config Details Form View</field>
+            <field name="model">project.holiday.config</field>
+            <field name="arch" type="xml">
+                <form string="Project Holiday Details">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="True"/>
+                                <field name="start_date"/>
+                                <field name="week_day_ids" widget="many2many_tags"
+                                       options="{'no_create': True,
+                            'no_quick_create': True, 'no_create_edit':True,
+                            'no_open': True,'create': False, 'create_edit': False}"
+                                       />
+                                <field name="month_ids"
+                                       widget="many2many_tags"
+                                       options="{'no_create': True,
+                            'no_quick_create': True, 'no_create_edit':True,
+                            'no_open': True,'create': False, 'create_edit': False}"
+                                       />
+
+                            </group>
+                            <group>
+                                <field name="active"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- === This is for  ProjectHolidayConfig Details tree view === -->
+        <record id="project_holiday_config_tree_id" model="ir.ui.view">
+            <field name="name">Project Holiday Tree View</field>
+            <field name="model">project.holiday.config</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="week_day_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ===this is for ProjectHolidayConfig action === -->
+        <record model="ir.actions.act_window" id="project_holiday_config_action_id">
+            <field name="name">Project Holiday Details</field>
+            <field name="res_model">project.holiday.config</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_holiday_configuration" parent="project.menu_project_config" name="Holiday Configuration"
+                  sequence="4"/>
+
+        <menuitem id="sub_menu_project_holiday_config"
+                  name="Project Holiday Configuration"
+                  parent="menu_holiday_configuration"
+                  action="project_holiday_config_action_id"
+        />
+
+    </data>
+</odoo>

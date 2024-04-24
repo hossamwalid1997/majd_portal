@@ -1,0 +1,40 @@
+.o_geofence_container{
+    width: 100%;    
+    min-height: 450px;
+    height: calc(100vh - 132px);
+}
+.o_geofence_draw_container{
+    width: 100%;
+    min-height: 450px;
+    height: calc(100vh - 400px);
+}
+.gmap_kisok_container{
+    margin-top: 10px;
+}
+.gmap_kisok_container h3{
+    padding:2px 2px 2px 2px;
+    color: #4c4c4c;
+}
+.gmap_kisok_view{
+    width: 425px;
+    height: 200px;
+}
+.gmap_kisok_toggle{        
+    position: absolute;
+    right: 20px;
+    color: #555555;
+    cursor: pointer;
+}
+.gmap_clear_button{
+    background-color: white; 
+    margin-bottom: 5px;
+    padding: 1px 8px 2px 8px;
+} 
+.ol-clear {
+    top: 72px;
+    left: .5em;
+}
+.ol-draw{
+    top: 94px;
+    left: .5em;
+}
